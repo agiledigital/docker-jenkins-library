@@ -10,9 +10,9 @@ def call(Map config) {
   }
 
   stage('Archive to Jenkins') {
-    def zipName = "${config.project}-${config.component}-${config.buildNumber}.zip"
-    sh "zip -r \"${zipName}\" \"${config.baseDir}\""
-    archiveArtifacts zipName
+    def tarName = "${config.project}-${config.component}-${config.buildNumber}.tar.gz"
+    sh "tar -czfv \"${tarName}\" -C \"${config.baseDir}\" ."
+    archiveArtifacts tarName
   }
 
 }
