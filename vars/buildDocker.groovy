@@ -4,7 +4,6 @@
  */
 
 def call(Map config) {
-  container('build-docker') {
 
   stage('Verify Contents') {
     sh "cat \"${config.baseDir}/Dockerfile\""
