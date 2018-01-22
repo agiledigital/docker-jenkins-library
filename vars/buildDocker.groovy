@@ -11,7 +11,7 @@ def call(Map config) {
 
   stage('Archive to Jenkins') {
     def tarName = "${config.project}-${config.component}-${config.buildNumber}.tar.gz"
-    sh "tar -czfv \"${tarName}\" -C \"${config.baseDir}\" ."
+    sh "tar -czvf \"${tarName}\" -C \"${config.baseDir}\" ."
     archiveArtifacts tarName
   }
 
