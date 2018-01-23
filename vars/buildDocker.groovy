@@ -9,10 +9,13 @@ def call(Map config) {
     sh "cat \"${config.baseDir}/Dockerfile\""
   }
 
-  stage('Archive to Jenkins') {
-    def tarName = "${config.project}-${config.component}-${config.buildNumber}.tar.gz"
-    sh "tar -czvf \"${tarName}\" -C \"${config.baseDir}\" ."
-    archiveArtifacts tarName
+  if(config.stage == 'dist') {
+
+    stage('Archive to Jenkins') {
+      def tarName = "${config.project}-${config.component}-${config.buildNumber}.tar.gz"
+      sh "tar -czvf \"${tarName}\" -C \"${config.baseDir}\" ."
+      archiveArtifacts tarName
+    }
   }
 
 }
