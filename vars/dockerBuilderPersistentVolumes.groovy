@@ -1,1 +1,1 @@
-def call() { return [] }
+def call(Map config) { return [] }
